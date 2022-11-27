@@ -4,6 +4,7 @@ import "./App.css";
 import Guess from "./Guess";
 import GameStore from "./GameStore";
 import Qwerty from "./Qwerty";
+import { faNetworkWired } from "@fortawesome/free-solid-svg-icons";
 
 const App = observer(() => {
 	const store = useLocalObservable(() => GameStore);
@@ -21,6 +22,15 @@ const App = observer(() => {
 			.then((data) => store.setWord(data.word));
 	}, []);
 
+	function randomWord() {
+		store.init();
+		fetch("https://words.dev-apis.com/word-of-the-day?random=1")
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => store.setWord(data.word));
+	}
+
 	useEffect(() => {
 		document.addEventListener("keyup", keyHandler);
 		return () => {
@@ -31,8 +41,8 @@ const App = observer(() => {
 	return (
 		<div className='flex h-screen w-screen items-center justify-center m-0'>
 			<div className='card flex flex-col items-center align-middle'>
-				<h1 className='text-4xl uppercase font-semibold '>
-					Wordle clone
+				<h1 className='font-bebas text-6xl uppercase font-semibold '>
+					Word puzzle
 				</h1>
 				{store.guesses.map((_, index) => {
 					return (
@@ -49,7 +59,14 @@ const App = observer(() => {
 				{store.won && <h1>You won!</h1>}
 				{store.lost && <h1>You lost!</h1>}
 				{(store.won || store.lost) && (
-					<button onClick={() => store.init()}>Reset</button>
+					<div>
+						<button onClick={() => store.init()}>
+							Reset
+						</button>
+						<button onClick={() => randomWord()}>
+							New word
+						</button>
+					</div>
 				)}
 				{!(store.won || store.lost) && <Qwerty store={store} />}
 			</div>

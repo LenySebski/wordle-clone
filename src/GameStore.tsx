@@ -1,5 +1,3 @@
-import { makeAutoObservable } from "mobx";
-
 const postUrl = "https://words.dev-apis.com/validate-word";
 
 export type StoreType = {
@@ -15,6 +13,7 @@ export type StoreType = {
 	handleKeyUp: (event: globalThis.KeyboardEvent) => void;
 	submitGuess: (guess: string) => void;
 	handleQwertyClick: (letter: string) => void;
+	handleBackspace: () => void;
 };
 
 export default {
@@ -26,7 +25,7 @@ export default {
 		return this.guesses[this.currentGuess - 1] === this.word;
 	},
 	get lost() {
-		return this.currentGuess === 6;
+		return this.currentGuess > 5;
 	},
 
 	get allGuesses() {
@@ -70,6 +69,12 @@ export default {
 		if (this.won || this.lost) {
 			console.log("Game over");
 		}
+	},
+
+	handleBackspace() {
+		this.guesses[this.currentGuess] = this.guesses[
+			this.currentGuess
+		].slice(0, -1);
 	},
 
 	handleKeyUp(ev: globalThis.KeyboardEvent) {
