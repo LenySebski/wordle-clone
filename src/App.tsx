@@ -39,31 +39,39 @@ const App = observer(() => {
 	}, [store]);
 
 	return (
-		<div className='flex h-screen w-screen items-center justify-center m-0'>
-			<div className='card flex flex-col items-center align-middle'>
-				<h1 className='font-bebas text-6xl uppercase font-semibold '>
-					Word puzzle
-				</h1>
-				{store.guesses.map((_, index) => {
-					return (
-						<Guess
-							word={store.word}
-							guess={store.guesses[index]}
-							row={index}
-							isGuessed={index < store.currentGuess}
-							currentGuess={store.currentGuess}
-							key={`row-${index}`}
-						/>
-					);
-				})}
-				{store.won && <h1>You won!</h1>}
-				{store.lost && <h1>You lost!</h1>}
+		<div className=' h-screen w-screen overflow-hidden'>
+			<div className='card h-screen flex flex-col '>
+				<div className='grow flex flex-col items-center align-middle'>
+					<h1 className='font-bebas text-6xl uppercase font-semibold my-8  md:my-10'>
+						Word puzzle
+					</h1>
+					{store.guesses.map((_, index) => {
+						return (
+							<Guess
+								word={store.word}
+								guess={store.guesses[index]}
+								row={index}
+								isGuessed={index < store.currentGuess}
+								currentGuess={store.currentGuess}
+								key={`row-${index}`}
+							/>
+						);
+					})}
+					{store.won && <h1 className='mt-6'>You won!</h1>}
+					{store.lost && <h1 className='mt-6'>You lost!</h1>}
+				</div>
 				{(store.won || store.lost) && (
-					<div>
-						<button onClick={() => store.init()}>
+					<div className='flex flex-col items-center justify-start gap-4 grow mb-12'>
+						<button
+							className='w-1/2 sm:w-56'
+							onClick={() => store.init()}
+						>
 							Reset
 						</button>
-						<button onClick={() => randomWord()}>
+						<button
+							className='w-1/2 sm:w-56'
+							onClick={() => randomWord()}
+						>
 							New word
 						</button>
 					</div>

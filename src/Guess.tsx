@@ -8,7 +8,7 @@ export type GuessProps = {
 
 export default function Guess({ word, guess, row, isGuessed }: GuessProps) {
 	return (
-		<div className='flex gap-x-2 m-2'>
+		<div className='flex gap-x-1 sm:gap-x-2 m-1 sm:m-2'>
 			{word.split("").map((_, index) => {
 				const bgColor = !isGuessed
 					? "bg-black"
@@ -20,7 +20,7 @@ export default function Guess({ word, guess, row, isGuessed }: GuessProps) {
 				return (
 					<div
 						className={
-							"guess-letter h-14 w-14 rounded-md  border-2 border-gray-400 text-white text-4xl flex justify-center items-center uppercase " +
+							"guess-letter h-10 w-10 text-2xl sm:h-14 sm:w-14 sm:text-4xl rounded-md  border-2 border-gray-400 text-white  flex justify-center items-center uppercase " +
 							bgColor
 						}
 						key={`row${row}-letter${index}`}
