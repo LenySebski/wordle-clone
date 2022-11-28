@@ -42,7 +42,7 @@ const App = observer(() => {
 		<div className=' h-screen w-screen overflow-hidden'>
 			<div className='card h-4/5 flex flex-col'>
 				<div className='grow flex flex-col items-center align-middle justify-center'>
-					<h1 className='font-bebas text-6xl uppercase font-semibold my-8  md:my-10'>
+					<h1 className='show-title font-bebas text-6xl uppercase font-semibold my-8  md:my-10'>
 						Word puzzle
 					</h1>
 					{store.guesses.map((_, index) => {
@@ -57,26 +57,36 @@ const App = observer(() => {
 							/>
 						);
 					})}
-					{store.won && <h1 className='mt-6'>You won!</h1>}
-					{store.lost && <h1 className='mt-6'>You lost!</h1>}
+					{store.won && (
+						<h1 className='win mt-6 mb-2 font-bebas'>
+							You won!
+						</h1>
+					)}
+					{store.lost && (
+						<h1 className='lose mt-6 mb-2 font-bebas'>
+							You lost!
+						</h1>
+					)}
 				</div>
 				{(store.won || store.lost) && (
 					<div className='flex flex-col items-center justify-start gap-4 grow mb-12'>
-						<button
-							className='w-1/2 sm:w-56'
+						<div
+							className='w-1/2 sm:w-56 slide-up font-bebas text-2xl uppercase font-semibold bg-gray-700 text-white rounded-md py-2 px-4 border border-gray-400 hover:bg-gray-800 text-center cursor-pointer active:bg-gray-400'
 							onClick={() => store.init()}
 						>
 							Reset
-						</button>
-						<button
-							className='w-1/2 sm:w-56'
+						</div>
+						<div
+							className='w-1/2 sm:w-56 slide-up font-bebas text-2xl uppercase font-semibold bg-gray-700 text-white rounded-md py-2 px-4 border border-gray-400 hover:bg-gray-800 text-center cursor-pointer active:bg-gray-400'
 							onClick={() => randomWord()}
 						>
 							New word
-						</button>
+						</div>
 					</div>
 				)}
-				{!(store.won || store.lost) && <Qwerty store={store} />}
+				{store.guesses.length > 1 && !(store.won || store.lost) && (
+					<Qwerty store={store} />
+				)}
 			</div>
 		</div>
 	);
