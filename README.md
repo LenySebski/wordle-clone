@@ -1,6 +1,8 @@
 # wordle-clone
 
-Clone of well known Wordle game. This a simple project to learn about the basics of:
+[demo](https://wordle-clone-lenysebski.vercel.app/)
+
+Clone of Wordle game. I used this project to get better grasp on:
 
 -    [React](https://reactjs.org/)
 -    [Typescript](https://www.typescriptlang.org/)

@@ -24,13 +24,13 @@ export default observer(function Qwerty({ store }: QwertyProps) {
 	const row2 = ["a", "s", "d", "f", "g", "h", "j", "k", "l", "enter"];
 	const row3 = ["z", "x", "c", "v", "b", "n", "m"];
 	return (
-		<div className='flex flex-col justify-center content-center gap-1  mb-4 sm:mb-12'>
+		<div className='flex flex-col justify-center content-center gap-1 grow sm:my-12'>
 			<div className='flex justify-center content-center gap-1 '>
 				{row1.map((letter, index) => {
 					if (letter === "backspace") {
 						return (
 							<div
-								className={`letter  h-7 w-7 text-sm  sm:text-2xl sm:h-12 sm:w-12 bg-gray-700 border-2 rounded-lg border-gray-400 text-white flex justify-center items-center  hover:cursor-pointer `}
+								className={`letter  h-8 w-8 text-lg  sm:text-2xl sm:h-12 sm:w-12 bg-gray-700 border-2 rounded-lg border-gray-400 text-white flex justify-center items-center  hover:cursor-pointer `}
 								key={`letter-${index}`}
 								onClick={() =>
 									gameStore.handleBackspace()
@@ -49,7 +49,7 @@ export default observer(function Qwerty({ store }: QwertyProps) {
 						: "bg-gray-700";
 					return (
 						<div
-							className={`keyboard-letter h-7 w-7 text-sm  sm:text-2xl sm:h-12 sm:w-12 ${bgColor} border-2 rounded-lg border-gray-400 text-white  flex justify-center items-center  hover:cursor-pointer`}
+							className={`keyboard-letter h-8 w-8 text-lg  sm:text-2xl sm:h-12 sm:w-12 ${bgColor} border-2 rounded-lg border-gray-400 text-white  flex justify-center items-center  hover:cursor-pointer`}
 							key={`letter-${index}`}
 							onClick={() =>
 								gameStore.handleQwertyClick(letter)
@@ -65,7 +65,7 @@ export default observer(function Qwerty({ store }: QwertyProps) {
 					if (letter === "enter") {
 						return (
 							<div
-								className={`letter  h-7 w-7 text-sm  sm:text-2xl sm:h-12 sm:w-12 bg-gray-700 border-2 rounded-lg border-gray-400 text-white  flex justify-center items-center  hover:cursor-pointer`}
+								className={`letter  h-8 w-8 text-lg  sm:text-2xl sm:h-12 sm:w-12 bg-gray-700 border-2 rounded-lg border-gray-400 text-white  flex justify-center items-center  hover:cursor-pointer`}
 								key={`letter-${index}`}
 								onClick={() =>
 									gameStore.submitGuess(
@@ -88,7 +88,7 @@ export default observer(function Qwerty({ store }: QwertyProps) {
 						: "bg-gray-700";
 					return (
 						<div
-							className={`keyboard-letter  h-7 w-7 text-sm  sm:text-2xl sm:h-12 sm:w-12 ${bgColor} border-2 rounded-lg border-gray-400 text-white  flex justify-center items-center  hover:cursor-pointer`}
+							className={`keyboard-letter  h-8 w-8 text-lg  sm:text-2xl sm:h-12 sm:w-12 ${bgColor} border-2 rounded-lg border-gray-400 text-white  flex justify-center items-center  hover:cursor-pointer`}
 							key={`letter-${index}`}
 							onClick={() =>
 								gameStore.handleQwertyClick(letter)
@@ -110,7 +110,7 @@ export default observer(function Qwerty({ store }: QwertyProps) {
 						: "bg-gray-700";
 					return (
 						<div
-							className={`keyboard-letter  h-7 w-7 text-sm  sm:text-2xl sm:h-12 sm:w-12 ${bgColor} border-2 rounded-lg border-gray-400 text-white flex justify-center items-center  hover:cursor-pointer`}
+							className={`keyboard-letter  h-8 w-8 text-lg  sm:text-2xl sm:h-12 sm:w-12 ${bgColor} border-2 rounded-lg border-gray-400 text-white flex justify-center items-center  hover:cursor-pointer`}
 							key={`letter-${index}`}
 							onClick={() =>
 								gameStore.handleQwertyClick(letter)
