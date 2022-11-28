@@ -40,7 +40,7 @@ const App = observer(() => {
 
 	return (
 		<div className=' h-screen w-screen overflow-hidden'>
-			<div className='card h-screen flex flex-col'>
+			<div className='card h-4/5 flex flex-col'>
 				<div className='grow flex flex-col items-center align-middle justify-center'>
 					<h1 className='font-bebas text-6xl uppercase font-semibold my-8  md:my-10'>
 						Word puzzle
